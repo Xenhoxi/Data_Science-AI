@@ -15,6 +15,8 @@ CC = gcc
 CFLAGS = -Werror -Wextra -Wall -lcurl
 
 SOURCES_CPP =	test_api.cpp \
+				read_json.cpp \
+				write_txt.cpp \
 
 SOURCES_C = \
 
@@ -24,22 +26,22 @@ OBJECTS = $(OBJECTS_CPP) $(OBJECTS_C)
 
 AI = openAI_api
 
-GLOB_INC = -I includes/
-BREW_LIB = -L /home/ljerinec/homebrew/lib
-BREW_INC = -I /home/ljerinec/homebrew/include
+# GLOB_INC = -I includes/
+# BREW_LIB = -L /home/ljerinec/homebrew/lib
+# BREW_INC = -I /home/ljerinec/homebrew/include
 
 ####################COMPILATION STYLING####################
 
 all: $(AI)
 
 %.o: %.cpp
-	@$(CXX) $(CFLAGS) -c $< -o $@ $(BREW_INC)
+	@$(CXX) $(CFLAGS) -c $< -o $@ 
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ $(BREW_INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(AI): $(OBJECTS)
-	@$(CXX) $(CFLAGS) -o $(AI) $(OBJECTS) $(BREW_LIB)
+	@$(CXX) $(CFLAGS) -o $(AI) $(OBJECTS) -lcurl
 
 clean:
 	@rm -f $(OBJECTS)

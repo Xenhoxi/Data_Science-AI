@@ -1,6 +1,4 @@
-#include <iostream>
-#include <curl/curl.h>
-#include <fstream>
+#include "Master.hpp"
 
 // This function will be used to collect the response from the API request
 size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp) {
@@ -16,29 +14,8 @@ int main() {
     std::string url = "https://api.openai.com/v1/chat/completions";
     
     // JSON data to send in the POST request
-    std::ifstream ifs("data.json");
-    std::string jsonData;
-    std::string buff;
-
-    if (!ifs.is_open())
-    {
-        std::cout << "Impossible to open the file !" << std::endl; 
-        return (1);
-    }
-    else
-    {
-        while (std::getline(ifs, buff))
-        {
-            std::cout << "buff =" << buff << "|"<< std::endl;
-            if (!jsonData.empty())
-                jsonData += "\n";
-            jsonData += buff;
-        }
-    }
+    std::string jsonData = read_json("data.json");
     std::cout << jsonData << std::endl;
-
-    return (0);
-
 
     // Initialize curl
     CURL* curl = curl_easy_init();
@@ -71,6 +48,7 @@ int main() {
         } else {
             // Print the response
             std::cout << "Response from OpenAI API: " << std::endl;
+            write_txt("Cover letter", readBuffer);
             std::cout << readBuffer << std::endl;
         }
 

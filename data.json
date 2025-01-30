@@ -4,11 +4,11 @@
     [
         {
             "role": "developer",
-            "content": "You are a helpful assistant."
+            "content": "You are a helpful assistant that know exactly how to write a cover letter. It will be really feal that as been wirte by a human. In french"
         },
         {
             "role": "user",
-            "content": "Write a haiku about recursion in programming."
+            "content": "Write a cover letter in french to help me find a intership in a compagny, My name is Leon, i am 22 years old. I'm looking for an intership in the field of programing i have done the 42 school at Mulhouse, i'm looking in data science, AI, or software programming"
         }
     ]
 }

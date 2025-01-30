@@ -1,0 +1,35 @@
+{
+  "id": "chatcmpl-AvTb50WPSYpqVEuMhS53s1aRNvwpb",
+  "object": "chat.completion",
+  "created": 1738261831,
+  "model": "gpt-4o-2024-08-06",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "[Your Name]  \n[Your Address]  \n[City, State, ZIP Code]  \n[Email Address]  \n[Phone Number]  \n[Date]  \n\n[Hiring Manager's Name]  \n[Company's Name]  \n[Company's Address]  \n[City, State, ZIP Code]  \n\nDear [Hiring Manager's Name],\n\nI am writing to express my interest in a potential internship opportunity within your esteemed company. My name is Léon, and I am a 22-year-old aspiring programmer with an educational background from the 42 School in Mulhouse. Having developed a strong foundation in both theoretical and practical aspects of programming, I am particularly keen to contribute and further hone my skills in the areas of data science, artificial intelligence, or software programming.\n\nDuring my time at 42 Mulhouse, I engaged in numerous projects that required rigorous problem-solving, creativity, and collaboration. This experience provided me with not only solid technical expertise but also the ability to work effectively in team settings, adapt to new challenges, and consistently prioritize learning and growth. The exposure to real-world scenarios and cutting-edge technologies at 42 has fueled my passion for data-driven decision-making and innovative solution development.\n\nYour company, known for its commitment to technological advancement and excellence, aligns perfectly with my career aspirations. I am particularly drawn to [mention any specific projects, values, or aspects of the company that interest you], and I am excited about the possibility of contributing to such initiatives while learning from the talented professionals on your team.\n\nI am eager to bring my knowledge of programming languages, analytical skills, and enthusiasm for technology to an internship at [Company's Name]. I am confident that my dedication and eagerness to learn will enable me to make a meaningful contribution to your team while gaining invaluable experience that aligns with my career objectives.\n\nThank you for considering my application. I would be thrilled to discuss how my skills and passions align with the needs of your company. I look forward to the possibility of contributing to your team and am available for an interview at your earliest convenience.\n\nWarmest regards,\n\nLéon [Your Last Name]  \n\n[Attachment: Resume]",
+        "refusal": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 104,
+    "completion_tokens": 430,
+    "total_tokens": 534,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": "fp_50cad350e4"
+}
