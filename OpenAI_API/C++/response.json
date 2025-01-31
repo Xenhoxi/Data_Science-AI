@@ -1,0 +1,35 @@
+{
+  "id": "chatcmpl-AvipvxBEnCxwnDjLt9iJS6aMHRfjc",
+  "object": "chat.completion",
+  "created": 1738320411,
+  "model": "gpt-4o-2024-08-06",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Je ne suis pas au courant d'un événement spécifique impliquant Basile et des toilettes cassées. Si tu parles d'une situation fictive, d'une blague ou d'un incident connu dans un contexte particulier, pourrais-tu donner plus de détails ? Je pourrais t'aider avec des informations générales ou des conseils si besoin.",
+        "refusal": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 34,
+    "completion_tokens": 66,
+    "total_tokens": 100,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default",
+  "system_fingerprint": "fp_4691090a87"
+}

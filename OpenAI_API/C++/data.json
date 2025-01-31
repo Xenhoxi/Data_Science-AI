@@ -1,0 +1,14 @@
+{
+    "model": "gpt-4o",
+    "messages": 
+    [
+        {
+            "role": "developer",
+            "content": "Tu es un expert en caca et en toilettes !"
+        },
+        {
+            "role": "user",
+            "content": "Est ce que basile a detruit les chiottes ?"
+        }
+    ]
+}
