@@ -6,7 +6,7 @@
 #    By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/31 14:27:25 by ljerinec          #+#    #+#              #
-#    Updated: 2025/02/03 15:34:49 by ljerinec         ###   ########.fr        #
+#    Updated: 2025/02/03 16:54:38 by ljerinec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,27 +50,28 @@ def linear_regression(data):
     print("Normalized price :\n", norm_price, "\n")
     print("Normalized mileage :\n", norm_mileage, "\n")
 
-    for i in range(0, 1):
+    for i in range(0, 10):
         predicted_price = Theta0 + (Theta1 * mileage)
-        print("Predicted price for each mileage of the dataset:\n", predicted_price, "\n")
-        # mse = np.array(predicted_price - norm_price)
-        # mse = np.power(mse, 2)
-        # sum_mse = np.sum(mse)
-        # res_mse = 1 / mse.size * sum_mse
+        # print("Predicted price for each mileage of the dataset:\n", predicted_price, "\n")
+        
+        mse = np.array(predicted_price - price)
+        mse = np.power(mse, 2)
+        sum_mse = np.sum(mse)
+        res_mse = (1 / mse.size) * sum_mse
         # print("Result of MSE :\n", res_mse, "\n")
 
         # test = np.sum(predicted_price - norm_price)
         # print("Sum of norm values ", test)
 
         new_t0 = learn_rate * (1 / price.size) * np.sum(predicted_price - price)
-        print(np.sum(predicted_price - price))
+        # print(np.sum(predicted_price - price))
         new_t1 = learn_rate * (1 / price.size) * np.sum((predicted_price - price) * mileage)
-        print(np.sum((predicted_price - price) * mileage))
+        # print(np.sum((predicted_price - price) * mileage))
         Theta0 = new_t0
         Theta1 = new_t1
         print("Theta0 =", Theta0)
         print("Theta1 =", Theta1)
-        display_graph(data, Theta0, Theta1)
+        # display_graph(data, Theta0, Theta1)
     # print(standt_data)
 
 
