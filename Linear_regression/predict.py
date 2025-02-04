@@ -1,16 +1,5 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    predict.py                                         :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/01/31 13:50:41 by ljerinec          #+#    #+#              #
-#    Updated: 2025/01/31 15:11:02 by ljerinec         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 import pandas as pd
+
 
 def main():
     mileage = None
@@ -30,15 +19,15 @@ def read_dataset(file) -> pd.DataFrame:
         data = pd.read_csv(file, dtype=float)
         return (data)
     except FileNotFoundError:
-        print(f"No training result found !")
+        print("No training result found !")
         return (pd.DataFrame())
-    
+
 
 def input_mileage():
     try:
         mileage = input("What's the mileage you want to estimate the price ? ")
         if int(mileage) < 0:
-            raise(ValueError)
+            raise (ValueError)
         return (mileage)
     except ValueError:
         print("Input a valid mileage (Km).")
