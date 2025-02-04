@@ -6,7 +6,7 @@
 #    By: ljerinec <ljerinec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/04 16:29:17 by ljerinec          #+#    #+#              #
-#    Updated: 2025/02/04 16:47:24 by ljerinec         ###   ########.fr        #
+#    Updated: 2025/02/04 16:49:41 by ljerinec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ venv:
 clean:
 	@rm -rf $(VENV)
 	@echo "Environnement virtuel supprimé."
-	# @rm -rf training_result.csv
+	@rm -rf training_result.csv
+	@rm -rf Plot.png
 
 requirements:
 	@if [ -d "$(VENV)" ]; then \

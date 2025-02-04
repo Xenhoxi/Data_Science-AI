@@ -24,8 +24,7 @@ def display_graph(mileage, price, Theta0, Theta1) -> None:
     plt.scatter(mileage, price, color='blue')
     plt.axline((0, Theta0), slope=Theta1, color='red')
     plt.ylim(0, 10000)
-    # plt.show()
-    plt.savefig("Plot repartition")
+    plt.savefig("Plot")
     plt.clf()
 
 
