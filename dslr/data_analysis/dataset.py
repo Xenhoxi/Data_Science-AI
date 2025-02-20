@@ -21,19 +21,25 @@ class Dataset:
     def display_statistics(self):
         # Select all collums of a specific types
         col_type = self.__dataset.select_dtypes(include=float)
-        # print(col_type)
+
         # Get all the collumns names
         col_name = col_type.columns
-        # print(col_name)
+
         # Remove all na row
         no_na_set = col_type.dropna()
         print(no_na_set)
 
-        test = [len(no_na_set[col]) for col in no_na_set]
-        print(np.array(test))
+        # Creer un np.array de la len de toutes les collumns du dataframe
+        # test = [len(no_na_set[col]) for col in no_na_set]
+        # print(np.array(test))
 
-        # stats = pd.DataFrame(columns=col_name, index=["Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"])
-        # print(stats)
+        stats = pd.DataFrame(columns=col_name, index=["Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"])
+
+        # Add a col to the dataframe
+        for col in col_name:
+            stats.loc['Count', col] = len(no_na_set[col])
+            stats.loc['Mean', col] = sum(no_na_set[col]) / len(no_na_set[col])
+        print(stats)
 
 
     def get_dataset(self):
