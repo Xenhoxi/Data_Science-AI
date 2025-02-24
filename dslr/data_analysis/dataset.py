@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import math
 
 
 class Dataset:
@@ -26,20 +27,23 @@ class Dataset:
         col_name = col_type.columns
 
         # Remove all na row
-        no_na_set = col_type.dropna()
-        print(no_na_set)
+        set = col_type.dropna()
+        print(set)
 
-        # Creer un np.array de la len de toutes les collumns du dataframe
-        # test = [len(no_na_set[col]) for col in no_na_set]
-        # print(np.array(test))
-
+        # Cree le dataframe pour afficher les stats
         stats = pd.DataFrame(columns=col_name, index=["Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"])
 
-        # Add a col to the dataframe
+        # Rempli les cols du dataframe
         for col in col_name:
-            stats.loc['Count', col] = len(no_na_set[col])
-            stats.loc['Mean', col] = sum(no_na_set[col]) / len(no_na_set[col])
-        print(stats)
+            stats.loc['Count', col] = len(set[col])
+            stats.loc['Mean', col] = sum(set[col]) / len(set[col])
+            stats.loc['Std', col] = math.sqrt(sum((set[col] - stats.loc['Mean', col]) ** 2) / len(set[col]))
+            stats.loc['Min', col] = self.min_of_col(set[col])
+            stats.loc['25%', col] = 0
+            stats.loc['50%', col] = 0
+            stats.loc['75%', col] = 0
+            stats.loc['Max', col] = self.max_of_col(set[col])
+        print(f"{stats}")
 
 
     def get_dataset(self):
@@ -53,3 +57,24 @@ class Dataset:
     
     def count(self):
         pass
+
+
+    def min_of_col(self, col: pd.DataFrame) -> float:
+        if not col.empty:
+            min = col.loc[0]
+        else:
+            return None
+        for i in col:
+            if i < min:
+                min = i
+        return min
+
+    def max_of_col(self, col: pd.DataFrame) -> float:
+        if not col.empty:
+            max = col.loc[0]
+        else:
+            return None
+        for i in col:
+            if i > max:
+                max = i
+        return max
