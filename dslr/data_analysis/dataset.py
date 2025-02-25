@@ -26,22 +26,22 @@ class Dataset:
         # Get all the collumns names
         col_name = col_type.columns
 
-        # Remove all na row
-        set = col_type.dropna()
-        print(set)
+        # Remove all na row et reindex de 0 a n-1 toutes les row du tableau
+        set = col_type.dropna().reset_index(drop=True)
 
         # Cree le dataframe pour afficher les stats
         stats = pd.DataFrame(columns=col_name, index=["Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"])
 
         # Rempli les cols du dataframe
         for col in col_name:
+            set = set.sort_values(by=col).reset_index(drop=True)
             stats.loc['Count', col] = len(set[col])
             stats.loc['Mean', col] = sum(set[col]) / len(set[col])
-            stats.loc['Std', col] = math.sqrt(sum((set[col] - stats.loc['Mean', col]) ** 2) / len(set[col]))
+            stats.loc['Std', col] = math.sqrt(sum((set[col] - stats.loc['Mean', col]) ** 2) / (len(set[col]) - 1))
             stats.loc['Min', col] = self.min_of_col(set[col])
-            stats.loc['25%', col] = 0
-            stats.loc['50%', col] = 0
-            stats.loc['75%', col] = 0
+            stats.loc['25%', col] = (set.loc[round(len(set[col]) / 4), col] + set.loc[round(len(set[col]) / 4) - 1, col]) / 2
+            stats.loc['50%', col] = set.loc[round(len(set[col]) / 2) - 1, col]
+            stats.loc['75%', col] = (set.loc[round(len(set[col]) / 4 * 3), col] + set.loc[round(len(set[col]) / 4 * 3) - 1, col]) / 2
             stats.loc['Max', col] = self.max_of_col(set[col])
         print(f"{stats}")
 
@@ -68,6 +68,7 @@ class Dataset:
             if i < min:
                 min = i
         return min
+
 
     def max_of_col(self, col: pd.DataFrame) -> float:
         if not col.empty:
