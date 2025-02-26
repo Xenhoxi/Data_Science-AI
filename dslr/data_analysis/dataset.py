@@ -19,20 +19,24 @@ class Dataset:
             print("Unexpected error, impossible to read the dataset check the given path !")
             return (pd.DataFrame())
 
+
+    # Select all collums of a specific types
+    # Remove all na row
+    # reindex de 0 a n-1 toutes les row du tableau
+    def clean_data_describe(self):
+        float_set = self.__dataset.select_dtypes(include=float)
+        set = float_set.dropna()
+        set.reset_index(drop=True)
+        return set
+
+
     def display_statistics(self):
-        # Select all collums of a specific types
-        col_type = self.__dataset.select_dtypes(include=float)
-
-        # Get all the collumns names
-        col_name = col_type.columns
-
-        # Remove all na row et reindex de 0 a n-1 toutes les row du tableau
-        set = col_type.dropna().reset_index(drop=True)
-
+        set = self.clean_data_describe()
+        # Recupere le nom de toutes les collumns
+        col_name = set.columns
         # Cree le dataframe pour afficher les stats
         stats = pd.DataFrame(columns=col_name, index=["Count", "Mean", "Std", "Min", "25%", "50%", "75%", "Max"])
-
-        # Rempli les cols du dataframe
+        # Remplis les cols du dataframe
         for col in col_name:
             set = set.sort_values(by=col).reset_index(drop=True)
             stats.loc['Count', col] = len(set[col])
@@ -53,10 +57,6 @@ class Dataset:
     def display_set(self):
         if not self.__dataset.empty:
             print(self.__dataset)
-
-    
-    def count(self):
-        pass
 
 
     def min_of_col(self, col: pd.DataFrame) -> float:
