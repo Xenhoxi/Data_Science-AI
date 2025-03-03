@@ -39,10 +39,13 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.KEYDOWN:
-                snake.move(event.key)
+                if event.key == pygame.K_ESCAPE:
+                    running = False
+                snake.change_move(event.key)
                 snake.print_grid(event.key)
 
         #update()
+        snake.move()
 
         #draw()
         screen.fill(WHITE)
